@@ -1,9 +1,8 @@
 package com.example.wipro.projectfacts.ui;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ListView;
@@ -19,7 +18,6 @@ import com.example.wipro.projectfacts.common.Constants;
 import com.example.wipro.projectfacts.model.Fact;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonNull;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -111,21 +109,22 @@ public class FactsActivity extends AppCompatActivity implements SwipeRefreshLayo
 
                                     // Setting adapter to load List view
                                     mFactsListAdapter = new FactsListAdapter(FactsActivity.this, mFactList);
-                                    mListView.setAdapter(mFactsListAdapter);
+                                    if(null != mListView) {
+                                        mListView.setAdapter(mFactsListAdapter);
+                                    }
                                     mFactsListAdapter.notifyDataSetChanged();
-                                    mSwipeRefreshLayout.setRefreshing(false);
-
                                 }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
-
+                        if(null != mSwipeRefreshLayout) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d(TAG, "Error : " + error);
+                Log.e(TAG, "Error : " + error);
             }
         });
         // Adding request to request queue
@@ -137,6 +136,10 @@ public class FactsActivity extends AppCompatActivity implements SwipeRefreshLayo
      */
     @Override
     public void onRefresh() {
+        Log.d(TAG, "inside onRefresh");
+        if(null != mSwipeRefreshLayout) {
+            mSwipeRefreshLayout.setRefreshing(true);
+        }
         fetchFacts();
     }
 
