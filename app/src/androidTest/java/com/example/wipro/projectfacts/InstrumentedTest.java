@@ -78,7 +78,7 @@ public class InstrumentedTest {
     public void verifyFirstShowTitleStatus() {
         allowPermissionsIfNeeded();
         onData(anything())
-                .inAdapterView(withId(R.id.listView_facts))
+                .inAdapterView(withId(R.id.recycler_view))
                 .atPosition(0).onChildView(withId(R.id.txtTitle)).check(matches(withText("Beavers")));
 
     }

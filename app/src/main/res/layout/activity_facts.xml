@@ -4,11 +4,9 @@ android:id="@+id/swipe_refresh_layout"
 android:layout_width="match_parent"
 android:layout_height="wrap_content">
 
-    <ListView
-        android:layout_width="fill_parent"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView_facts">
-
-    </ListView>
-
+        android:scrollbars="vertical" />
 </android.support.v4.widget.SwipeRefreshLayout>

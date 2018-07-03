@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ProjectFacts</string>
     <string name="title">Title</string>
+    <string name="default_title">Facts</string>
+    <string name="no_network_connection">No Network Connection</string>
+    <string name="dialog_message">Please turn on internet connection to continue</string>
+    <string name="close">close</string>
 </resources>
